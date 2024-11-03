@@ -11,5 +11,4 @@ class PostAdmin(admin.ModelAdmin):
                    'published_date',
                    'created_date')
     list_filter = ('status',)
-    ordering =['created_date']
     search_fields=['title','content']
