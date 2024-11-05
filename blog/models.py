@@ -26,4 +26,7 @@ class Post(models.Model):
         # verbose_name_plural = 'پست ها'
     def __str__(self):
         return f"{self.id} : {self.title}"
+    def counted_views_Inc(self):
+        self.counted_views +=1
+        self.save()
     
