@@ -5,7 +5,8 @@ from blog.models import Post,Category
 class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_date'
     empty_value_display = '-empty-'
-    list_display =('title',
+    list_display =('id',
+                   'title',
                    'author',
                    'image',
                    'counted_views',

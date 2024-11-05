@@ -3,14 +3,16 @@ from django.shortcuts import render,get_object_or_404
 from blog.models import Post
 # آدرس شروع از فولدر تمپلیتس
 def blog_view(request):
-    posts = Post.objects.filter(status = 1).filter(published_date__lte = timezone.now())
-    context = {'posts':posts}
+    published_posts = Post.get_all_published_posts()
+    context = {'posts':published_posts}
     return render(request,'blog/blog-home.html',context)
 def blog_single(request,pid):
-    posts = Post.objects.filter(status = 1)
-    post = get_object_or_404(posts,pk=pid)
+    published_posts = Post.get_all_published_posts()
+    post = get_object_or_404(published_posts,pk=pid)
+    next_post = post.next_post(published_posts)
+    previous_post = post.previous_post(published_posts)
     post.counted_views_Inc()
-    context = {'post':post}
+    context = {'post':post , 'next_post':next_post , 'previous_post':previous_post}
     return render(request,'blog/blog-single.html',context)
 
 
