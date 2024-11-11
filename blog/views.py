@@ -20,5 +20,14 @@ def blog_single(request,pid):
     context = {'post':post , 'next_post':next_post , 'previous_post':previous_post}
     return render(request,'blog/blog-single.html',context)
 
+def blog_search(request):
+    posts = Post.get_all_published_posts()
+    if request.method == 'GET':
+        # walrus
+        if s := request.GET.get('s'):
+            posts=posts.filter(content__contains=s)
+    context = {'posts':posts}
+    return render(request,'blog/blog-home.html',context)
+
 
   
