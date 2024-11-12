@@ -29,6 +29,9 @@ def newsletter_view(request):
         form = NewsletterForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'Thanks , subscribed successfully')
+        else:
+            messages.error(request,'something went wrong. try subscribe again')
     return HttpResponseRedirect('/')
 
        
