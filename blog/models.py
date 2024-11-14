@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.urls import reverse
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -40,6 +41,9 @@ class Post(models.Model):
     def previous_post(self,posts):
         # posts =Post.get_all_published_posts()
         return posts.filter(id__lt=self.id).order_by('-id').first()
+    # show blog in admin and sitemaps
+    def get_absolute_url(self):
+        return reverse('blog:single',kwargs={'pid':self.id})
     
 
 
