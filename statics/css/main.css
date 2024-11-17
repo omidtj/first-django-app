@@ -1757,7 +1757,10 @@ h1, h2, h3, h4, h5, h6 {
   background: url(../img/elements/success-check.png) no-repeat center center/cover;
   border: none;
 }
-
+.disabled-a {
+  pointer-events: none;
+  cursor: default;
+}
 .disabled-checkbox {
   width: 16px;
   height: 16px;
