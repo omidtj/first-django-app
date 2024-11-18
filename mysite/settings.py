@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'captcha',
     'website.apps.WebsiteConfig',
     'blog.apps.BlogConfig',
-    'debug_toolbar'
+    'debug_toolbar',
+    'accounts'
 ]
 # site framework
 SITE_ID = 1
