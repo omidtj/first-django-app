@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+</head>
+<body class="h-100">
+    <div   class="h-100 d-flex align-items-center justify-content-center ">
+        
+        <div style="width: 300px;">
+            <h3 class="mb-4">Sign Up</h3>
+            <form method="post" action="{% url 'accounts:signup' %}">
+                {% csrf_token %}
+                <!-- Username input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <label class="form-label" for="form2Example1">Username</label>
+                  <input type="text" name="username" id="form2Example1" class="form-control" />
+                </div>
+              
+                <!-- Password 1 input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <label class="form-label" for="form2Example2">Password</label>
+                  <input type="password" name="password1" id="form2Example2" class="form-control" />
+                </div>
+
+                <!-- Password 2 input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="form2Example2">Confirm Password</label>
+                <input type="password" name="password2" id="form2Example2" class="form-control" />
+                </div>
+              
+                <!-- Submit button -->
+                <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign up</button>
+            </form>
+        </div>
+      </div>
+   
+</body>
+</html>
