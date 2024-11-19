@@ -11,6 +11,7 @@ class PostAdmin(admin.ModelAdmin):
                    'image',
                    'counted_views',
                    'status',
+                   'login_require',
                    'published_date',
                    'created_date')
     list_filter = ('status','author')
