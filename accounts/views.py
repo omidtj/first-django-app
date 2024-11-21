@@ -4,6 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q
+from django.contrib import messages
 # from django.core.mail import send_mail
 # from django.conf import settings
 
@@ -15,11 +16,18 @@ def login_view(request):
             form = AuthenticationForm(request=request,data=request.POST) #post
             username= request.POST['username']
             password= request.POST['password']
-            user_data = User.objects.get(Q(username__iexact=username) | Q(email__iexact=username))
-            user = authenticate(username=user_data.username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('/')
+            try:
+                user_data = User.objects.get(Q(username__iexact=username) | Q(email__iexact=username))
+                user = authenticate(username=user_data.username, password=password)   
+                if user is not None:
+                    login(request, user)
+                    return redirect('/')
+                else :
+                    messages.add_message(request,messages.ERROR,'Login Failed Please enter correct Username and Password')
+            except:  
+                messages.add_message(request,messages.ERROR,'Login Failed Please enter correct Username and Password')
+             
+
         context={'form':form}    
         return render(request,'accounts/login.html',context)
     else:
@@ -45,7 +53,11 @@ def signup_view(request):
                     user.first_name = first_name
                     user.last_name = last_name
                     user.save()
-                    return redirect('/')
+                    messages.add_message(request,messages.SUCCESS,'your account created successfully , Please Log in')
+                    return render(request,'accounts/login.html')
+                else :
+                    messages.add_message(request,messages.ERROR,'something went wrong , Please try again!')
+
         form =UserCreationForm()
         context={'form':form}
         return render(request,'accounts/signup.html',context)
