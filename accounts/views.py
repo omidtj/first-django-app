@@ -4,6 +4,9 @@ from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q
+# from django.core.mail import send_mail
+# from django.conf import settings
+
 # Create your views here.
 def login_view(request):
     if not request.user.is_authenticated:
@@ -48,4 +51,11 @@ def signup_view(request):
         return render(request,'accounts/signup.html',context)
     else:
         return redirect('/')
-        
+
+""" def forget_password_view(request):
+    subject = 'Thank you for registering to our site'
+    message = ' it  means a world to us '
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = ['omid.tajer@gmail.com',]   
+    send_mail( subject, message, email_from, recipient_list )  
+    return redirect('/')   """      
