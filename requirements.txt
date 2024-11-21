@@ -3,3 +3,12 @@ asgiref
 pytz
 sqlparse
 Pillow
+bleach
+tzdata
+django-debug-toolbar
+django-multi-captcha-admin
+django-ranged-response
+django-robots
+django-simple-captcha
+django-taggit
+webencodings
