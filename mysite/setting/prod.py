@@ -24,9 +24,10 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# '/home/currentuser_cpanel/public_html ...
+MEDIA_ROOT = '/home/mkomidir/public_html/media'
+STATIC_ROOT = '/home/mkomidir/public_html/static'
 
-MEDIA_ROOT = BASE_DIR / 'media'
-STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [
     BASE_DIR / "statics",
 ]
