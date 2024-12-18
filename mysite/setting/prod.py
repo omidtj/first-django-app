@@ -19,11 +19,16 @@ SITE_ID = 1
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+	'default': {
+		'ENGINE': 'django.db.backends.mysql',
+		'NAME': 'mkomidir_travel',
+		'USER': 'mkomidir_omid',
+		'PASSWORD': 'P2umM7n6ssGW',
+		'HOST':'localhost',
+		'PORT':'3306',
+	}
 }
+
 # '/home/currentuser_cpanel/public_html ...
 MEDIA_ROOT = '/home/mkomidir/public_html/media'
 STATIC_ROOT = '/home/mkomidir/public_html/static'
