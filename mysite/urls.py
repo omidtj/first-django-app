@@ -14,7 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path,include,re_path
+from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
@@ -32,7 +33,7 @@ urlpatterns = [
     path('',include('website.urls')),
     path('blog/',include('blog.urls')),
     path('accounts/',include('accounts.urls')),
-
+    # others
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
          name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt',include('robots.urls')),
@@ -41,3 +42,6 @@ urlpatterns = [
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.MAINTENANCE_MODE:
+   urlpatterns.insert(0, re_path(r'^', TemplateView.as_view(template_name='status/503.html'), name='maintenance'))
