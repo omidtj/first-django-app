@@ -26,7 +26,7 @@ DATABASES = {
 }
 
 MEDIA_ROOT = BASE_DIR / 'media'
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / "statics",
 ]
@@ -40,4 +40,4 @@ EMAIL_HOST_USER = 'omidweb67@gmail.com'
 EMAIL_HOST_PASSWORD = 'zktu hcfl pzjk gjox'
 
 # just for test
-MAINTENANCE_MODE = True
+MAINTENANCE_MODE = False

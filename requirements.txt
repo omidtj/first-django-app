@@ -13,3 +13,4 @@ django-simple-captcha
 django-taggit
 webencodings
 mysqlclient
+django_compressor
